@@ -1,6 +1,5 @@
-//let nombre = prompt("PRIEDRA / PAPEL / TIJERA" + "\n \nIngresa tu nombre.");
+let jugador1 = prompt("PRIEDRA / PAPEL / TIJERA" + "\n \nIngresa tu nombre.");
+let opcion_jugador1 = prompt("Escoge!" + "\n \n- Piedra \n- Papel \n- Tijera");
 
+document.write(`<div class='cuadro'> <h1> Jugador: <strong>${jugador1}</strong> </h1> <h1> Ha escogido <strong>${opcion_jugador1}</strong> </div>`);
 
-//document.write("<h1>" + "Hola " + nombre + "</h1>" + "<h1>" + "Espero estes de animo para jugar" + "</h1>" + "<h1>" + ":D" + "</h1>");
-
-//document.write("Hola " + nombre + "Espero estes de animo para jugar" + ":D" );
