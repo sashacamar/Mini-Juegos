@@ -98,7 +98,7 @@ function pcAleatorio(max) {
 
 
 for (let i = 0; i < max_partidas; i+=1) {
-    let opcion1 = prompt(`Partida ${i} \nEscoge! \n \n1. Piedra \n2. Papel \n3. Tijera`);
+    let opcion1 = prompt(`Partida ${i+1} \nEscoge! \n \n1. Piedra \n2. Papel \n3. Tijera`);
     
     let mayus = opcion1.toUpperCase();
 
