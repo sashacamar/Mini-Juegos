@@ -1,3 +1,5 @@
+//Variables ---------------------------------------------------------------------------------
+
 let jugador1 = prompt("PRIEDRA / PAPEL / TIJERA" + "\n \nIngresa tu nombre.");
 let opcion_jugador1;
 
@@ -6,15 +8,21 @@ let numPartida;
 
 let opcion_pc;
 
+//Array ---------------------------------------------------------------------------------
+
+const partidas = [];
 
 
-
+//Document.write del nombre del jugador ------------------------------------------------------
 
 document.write(`<div class='cuadro_nombre'> 
 <h1> Jugador: <strong>${jugador1}</strong> </h1> 
 </div>`);
 
-class Partidas {
+
+//Constructor de objetos -------------------------------------------------------------------
+
+class Partida {
     constructor (usuario, numPartida, eligio, pcAtaca) {
         this.usuario = usuario;
         this.numPartida = numPartida;
@@ -22,6 +30,8 @@ class Partidas {
         this.pcAtaca = pcAtaca;
         //this.resultado = resultado;
     }
+
+    //Metodos del objeto ---------------------------------------------------------------------
     mostrarResultado  = function() {
         if (this.eligio == "Piedra") {
             if(this.pcAtaca == "Papel"){
@@ -73,6 +83,9 @@ class Partidas {
 }
 
 
+//funciones ---------------------------------------------------------------------------------
+
+//Opcion de la pc de forma aleatoria
 function pcAleatorio(max) {
     let num_aleatorio = Math.floor(Math.random() * max);
 
@@ -93,9 +106,7 @@ function pcAleatorio(max) {
 
 
 
-
-
-
+//Bucle ---------------------------------------------------------------------------------
 
 for (let i = 0; i < max_partidas; i+=1) {
     let opcion1 = prompt(`Partida ${i+1} \nEscoge! \n \n1. Piedra \n2. Papel \n3. Tijera`);
@@ -104,7 +115,6 @@ for (let i = 0; i < max_partidas; i+=1) {
 
     numPartida = i + 1;
 
-    let partida = {};
 
     switch (mayus) {
         case '1':
@@ -127,10 +137,10 @@ for (let i = 0; i < max_partidas; i+=1) {
     }
 
     pcAleatorio(3);
-    partida[i] = new Partidas (jugador1, numPartida, opcion_jugador1, opcion_pc);
-    partida[i].imprimirPartida();
+    partidas.push(new Partida (jugador1, numPartida, opcion_jugador1, opcion_pc));
+    partidas[i].imprimirPartida();
 
-    console.table(partida[i]);
+    console.table(partidas[i]);
 
 }
 
