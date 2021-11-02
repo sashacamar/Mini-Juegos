@@ -32,7 +32,7 @@ class Partida {
     }
 
     //Metodos del objeto ---------------------------------------------------------------------
-    mostrarResultado  = function() {
+    mostrarResultado() {
         if (this.eligio == "Piedra") {
             if(this.pcAtaca == "Papel"){
                 this.resultado = "perdiste";
@@ -69,7 +69,7 @@ class Partida {
     
         }
     }
-    imprimirPartida = function() {
+    imprimirPartida() {
         this.mostrarResultado();
     
         document.write(`<div class='cuadro'> 
