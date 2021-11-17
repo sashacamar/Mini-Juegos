@@ -11,6 +11,7 @@
 
     <!-- LINK CSS -->
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/ventana-emergente.css">
 
     <!-- FUENTES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,15 +29,35 @@
     </div>
     
     <div class="jugada">
-        <img class="jugada-vos" src="" alt="Tu Mano" id="vos">
-        <img class="jugada-pc" src="" alt="PC Mano" id="pc">
+        <img class="jugada-vos" src="assets/img/Papel_vos.png" alt="Tu Mano" id="vos">
+        <img class="jugada-pc" src="assets/img/Papel_pc.png" alt="PC Mano" id="pc">
+    </div>
+
+    <div class="contador-puntaje">
+        <h2 class="puntaje-vos">0</h2>
+        <h2 class="puntaje-pc">0</h2>
     </div>
 
     <div class="resultados">
-        <img class="resultado" src="" alt="resultado" id="resultadoPartida">
+        <img class="resultado" src="assets/img/empate.png" alt="resultado" id="resultadoPartida">
         <img class="bg-resultado" src="assets/img/resultados.png" alt="bg resultado">
     </div>
+
+
+
+    <!-- ventana-emergente -->
+
+    <div class="ventana-emergente" id="ventana-emergente">
+        <img class="boton-salir" id="boton-salir" src="assets/ventana-emergente/salir.png" alt="X">
+        <h1 class="ventana-titulo">Selecciona tu opción!</h1>
+        <div class="ventana-contenedor-img">
+            <img class="boton-img" id="boton-piedra" src="assets/ventana-emergente/piedra.png" alt="Piedra">
+            <img class="boton-img" id="boton-papel" src="assets/ventana-emergente/papel.png" alt="Papel">
+            <img class="boton-img" id="boton-tijera" src="assets/ventana-emergente/tijera.png" alt="Tijera">
+        </div>
+    </div>
     
+    <script src="js/ventana-emergente.js"></script>
     <script src="js/app.js"></script>
 
 </body>

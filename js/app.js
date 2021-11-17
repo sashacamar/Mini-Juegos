@@ -5,8 +5,7 @@ const partidas = [];
 //Constructor de objetos -------------------------------------------------------------------
 
 class Partida {
-    constructor (usuario, eligio) {
-        this.usuario = usuario;
+    constructor (eligio) {
         this.eligio = eligio;
         this.pcAtaca;
         this.resultado;
@@ -29,7 +28,7 @@ class Partida {
             default:
                 this.pcAtaca = "Hubo un error";
         }
-      }
+        }
     
 
     calcularResultado() {
@@ -87,55 +86,35 @@ class Partida {
 }
 
 
-//Juego ---------------------------------------------------------------------------------
     
-    //Variables ---------------------------------------------------------------------------------
+function juego() {
+    if (click == 1) {
+        click = 0;
+        //Juego --------------------------------------------------------------------------------
+        
+        
+            //Crear Objeto ---------------------------------------------------------------------------------
+        
+        partidas.push(new Partida (opcion_jugador));
+        
+            //llamando Metodos del objeto ------------------------------------------------------------------
+        
+        partidas[0].pcAleatorio(3);
+        partidas[0].imprimirPartida();
+        
+        
+            //Consola -------------------------------------------------------------------------------------
+        
+        console.table(partidas[0]);
+    }
 
-let jugador1 = prompt("PRIEDRA / PAPEL / TIJERA" + "\n \nIngresa tu nombre.");
-let opcion_jugador;
-
-let opcion = prompt(`${jugador1} Escoge! \n \n1. Piedra \n2. Papel \n3. Tijera`);
-
-let mayus = opcion.toUpperCase();
-    
-    //Condicional ---------------------------------------------------------------------------------
-
-switch (mayus) {
-    case '1':
-    case 'PIEDRA':
-        opcion_jugador = "Piedra";
-        break;
-
-    case '2':
-    case 'PAPEL':
-        opcion_jugador = "Papel";
-        break;
-
-    case '3':
-    case 'TIJERA':
-        opcion_jugador = "Tijera";
-        break;
-
-    default:
-        opcion_jugador = "No has elegido ninguna opcion";
 }
 
 
-    //Crear Objeto ---------------------------------------------------------------------------------
 
-partidas.push(new Partida (jugador1, opcion_jugador));
+    
 
-    //llamando Metodos del objeto ------------------------------------------------------------------
-
-partidas[0].pcAleatorio(3);
-partidas[0].imprimirPartida();
-
-
-    //Consola -------------------------------------------------------------------------------------
-
-console.table(partidas[0]);
-
-
+    
 
 
 
