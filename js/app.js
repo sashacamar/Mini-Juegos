@@ -169,8 +169,16 @@ boton_restart.addEventListener("click", () => {if(ventanaEmergente == 0){ventana
 let puntos_guardado_vos = localStorage.getItem("Puntaje_Vos");
 let puntos_guardado_pc = localStorage.getItem("Puntaje_Pc");
 
-puntaje_vos.innerText = puntos_guardado_vos;
-puntaje_pc.innerText = puntos_guardado_pc;
+
+function EstadoPuntos() {
+    if (parseInt(puntos_guardado_vos)>0 || parseInt(puntos_guardado_pc)>0) {
+        puntaje_vos.innerText = puntos_guardado_vos;
+        puntaje_pc.innerText = puntos_guardado_pc;
+        
+    }
+}
+
+EstadoPuntos();
 
 
 
