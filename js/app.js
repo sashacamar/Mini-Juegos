@@ -2,10 +2,19 @@
 
 const partidas = [];
 
+//Variable ---------------------------------------------------------------------------------
+
+let numPartida = 0;
+let puntaje_vos = document.querySelector("#puntaje-vos");  
+let puntaje_pc = document.querySelector("#puntaje-pc");  
+
+
+
 //Constructor de objetos -------------------------------------------------------------------
 
 class Partida {
-    constructor (eligio) {
+    constructor (num, eligio) {
+        this.partida = num;
         this.eligio = eligio;
         this.pcAtaca;
         this.resultado;
@@ -82,6 +91,25 @@ class Partida {
         resultadoPartida.src = `assets/img/${this.resultado}.png`;
 
     }
+
+    //LocalStorage del Array de partidas ---------------------------------------------------------------------------------
+
+    guardarLocal(clave, valor) {
+        localStorage.setItem(clave, valor) 
+    };
+
+    //Contador de puntos ---------------------------------------------------------------------------------
+
+    
+    imprimirPuntos() {
+    
+        if (this.resultado == "has_ganado") {
+            puntaje_vos.innerText = parseInt(puntaje_vos.innerText) + 1;
+        } else if (this.resultado == "perdiste") {
+            puntaje_pc.innerText = parseInt(puntaje_pc.innerText) + 1;
+        }
+    
+    }
     
 }
 
@@ -92,35 +120,69 @@ function juego() {
         click = 0;
         //Juego --------------------------------------------------------------------------------
         
+        numPartida++;
         
             //Crear Objeto ---------------------------------------------------------------------------------
         
-        partidas.push(new Partida (opcion_jugador));
+        partidas.push(new Partida (numPartida, opcion_jugador));
         
             //llamando Metodos del objeto ------------------------------------------------------------------
         
-        partidas[0].pcAleatorio(3);
-        partidas[0].imprimirPartida();
+        partidas[partidas.length-1].pcAleatorio(3);
+        partidas[partidas.length-1].imprimirPartida();
+        partidas[partidas.length-1].imprimirPuntos();
+        partidas[partidas.length-1].guardarLocal ("partidas", JSON.stringify(partidas));
+
+            //localStorage --------------------------------------------------------------------------------
+        
+        localStorage.setItem("Puntaje_Vos", puntaje_vos.innerText);
+        localStorage.setItem("Puntaje_Pc", puntaje_pc.innerText);
+
+
         
         
             //Consola -------------------------------------------------------------------------------------
-        
-        console.table(partidas[0]);
+        const tabla_partidas = JSON.parse(localStorage.getItem("partidas"));
+        console.table(tabla_partidas[partidas.length-1]);
     }
 
 }
 
 
 
-    
-
-    
-
-
+//Replay --------------------------------------------------------------------------------
+let boton_replay = document.querySelector("#boton-replay");  
+boton_replay.addEventListener("click", () => {if(ventanaEmergente == 0){ventanaEmergente=1; localStorage.setItem("Estado_Ventana", ventanaEmergente); ventana.classList.remove("cierre-ventana")}});
 
 
 
 
+//Restart --------------------------------------------------------------------------------
+let boton_restart = document.querySelector("#boton-restart");    
+boton_restart.addEventListener("click", () => {if(ventanaEmergente == 0){ventanaEmergente=1; localStorage.setItem("Estado_Ventana", ventanaEmergente); ventana.classList.remove("cierre-ventana")}; numPartida=0;  puntaje_vos.innerText = 0; puntaje_pc.innerText = 0; partidas.length=0;});
 
 
+
+
+//localStorage --------------------------------------------------------------------------------
+
+let puntos_guardado_vos = localStorage.getItem("Puntaje_Vos");
+let puntos_guardado_pc = localStorage.getItem("Puntaje_Pc");
+
+puntaje_vos.innerText = puntos_guardado_vos;
+puntaje_pc.innerText = puntos_guardado_pc;
+
+
+
+
+let estado_guardado_ventana = localStorage.getItem("Estado_Ventana");
+
+function EstadoVentana() {
+    if (estado_guardado_ventana == 0) {
+        ventanaEmergente = 0;
+        ventana.classList.add("cierre-ventana");
+    }
+}
+
+EstadoVentana();
 
