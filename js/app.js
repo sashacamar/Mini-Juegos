@@ -1,14 +1,10 @@
-//Array ---------------------------------------------------------------------------------
-
-const partidas = [];
-
 //Variable ---------------------------------------------------------------------------------
 
 let numPartida = 0;
-let puntaje_vos = document.querySelector("#puntaje-vos");  
-let puntaje_pc = document.querySelector("#puntaje-pc");  
 
+//Array ---------------------------------------------------------------------------------
 
+const partidas = [];
 
 //Constructor de objetos -------------------------------------------------------------------
 
@@ -82,14 +78,21 @@ class Partida {
     imprimirPartida() {
         this.calcularResultado();
     
-        let vos = document.getElementById("vos");
-        let pc = document.getElementById("pc");
-        let resultadoPartida = document.getElementById("resultadoPartida");
+        $("#vos").attr("src", `assets/img/${this.eligio}_vos.png`);
+        $("#pc").attr("src", `assets/img/${this.pcAtaca}_pc.png`);
+        $("#resultadoPartida").attr("src", `assets/img/${this.resultado}.png`);
 
-        vos.src = `assets/img/${this.eligio}_vos.png`;
-        pc.src = `assets/img/${this.pcAtaca}_pc.png`;
-        resultadoPartida.src = `assets/img/${this.resultado}.png`;
+    }
 
+    
+    imprimirPuntos() {
+        
+        if (this.resultado == "has_ganado") {
+            $("#puntaje-vos").html(`${parseInt($("#puntaje-vos").html()) + 1}`);
+        } else if (this.resultado == "perdiste") {
+            $("#puntaje-pc").html(`${parseInt($("#puntaje-pc").html()) + 1}`);
+        }
+        
     }
 
     //LocalStorage del Array de partidas ---------------------------------------------------------------------------------
@@ -97,23 +100,10 @@ class Partida {
     guardarLocal(clave, valor) {
         localStorage.setItem(clave, valor) 
     };
-
-    //Contador de puntos ---------------------------------------------------------------------------------
-
-    
-    imprimirPuntos() {
-    
-        if (this.resultado == "has_ganado") {
-            puntaje_vos.innerText = parseInt(puntaje_vos.innerText) + 1;
-        } else if (this.resultado == "perdiste") {
-            puntaje_pc.innerText = parseInt(puntaje_pc.innerText) + 1;
-        }
-    
-    }
     
 }
 
-
+//Funcion Juego ---------------------------------------------------------------------------------
     
 function juego() {
     if (click == 1) {
@@ -122,26 +112,24 @@ function juego() {
         
         numPartida++;
         
-            //Crear Objeto ---------------------------------------------------------------------------------
+        //Crear Objeto ---------------------------------------------------------------------------------
         
         partidas.push(new Partida (numPartida, opcion_jugador));
         
-            //llamando Metodos del objeto ------------------------------------------------------------------
+        //llamando Metodos del objeto ------------------------------------------------------------------
         
         partidas[partidas.length-1].pcAleatorio(3);
         partidas[partidas.length-1].imprimirPartida();
         partidas[partidas.length-1].imprimirPuntos();
         partidas[partidas.length-1].guardarLocal ("partidas", JSON.stringify(partidas));
 
-            //localStorage --------------------------------------------------------------------------------
+        //localStorage --------------------------------------------------------------------------------
         
-        localStorage.setItem("Puntaje_Vos", puntaje_vos.innerText);
-        localStorage.setItem("Puntaje_Pc", puntaje_pc.innerText);
+        localStorage.setItem("Puntaje_Vos", $("#puntaje-vos").html());
+        localStorage.setItem("Puntaje_Pc", $("#puntaje-pc").html());
 
 
-        
-        
-            //Consola -------------------------------------------------------------------------------------
+        //Consola -------------------------------------------------------------------------------------
         const tabla_partidas = JSON.parse(localStorage.getItem("partidas"));
         console.table(tabla_partidas[partidas.length-1]);
     }
@@ -149,46 +137,41 @@ function juego() {
 }
 
 
-
 //Replay --------------------------------------------------------------------------------
-let boton_replay = document.querySelector("#boton-replay");  
-boton_replay.addEventListener("click", () => {if(ventanaEmergente == 0){ventanaEmergente=1; localStorage.setItem("Estado_Ventana", ventanaEmergente); ventana.classList.remove("cierre-ventana")}});
 
-
-
+$("#boton-replay").click( () => {if(ventanaEmergente == 0){ventanaEmergente=1; localStorage.setItem("Estado_Ventana", ventanaEmergente); $("#ventana-emergente").removeClass("cierre-ventana")}});
 
 //Restart --------------------------------------------------------------------------------
+
 let boton_restart = document.querySelector("#boton-restart");    
-boton_restart.addEventListener("click", () => {if(ventanaEmergente == 0){ventanaEmergente=1; localStorage.setItem("Estado_Ventana", ventanaEmergente); ventana.classList.remove("cierre-ventana")}; numPartida=0;  puntaje_vos.innerText = 0; puntaje_pc.innerText = 0; partidas.length=0;});
-
-
+$("#boton-restart").click( () => {if(ventanaEmergente == 0){ventanaEmergente=1; localStorage.setItem("Estado_Ventana", ventanaEmergente); $("#ventana-emergente").removeClass("cierre-ventana")}; numPartida=0;  $("#puntaje-vos").html("0"); $("#puntaje-pc").html("0"); partidas.length=0;});
 
 
 //localStorage --------------------------------------------------------------------------------
 
+    //Estado de Puntos ---------------------------------------------------------------------------------
+
 let puntos_guardado_vos = localStorage.getItem("Puntaje_Vos");
 let puntos_guardado_pc = localStorage.getItem("Puntaje_Pc");
 
-
 function EstadoPuntos() {
     if (parseInt(puntos_guardado_vos)>0 || parseInt(puntos_guardado_pc)>0) {
-        puntaje_vos.innerText = puntos_guardado_vos;
-        puntaje_pc.innerText = puntos_guardado_pc;
+        $("#puntaje-vos").html(puntos_guardado_vos);
+        $("#puntaje-pc").html(puntos_guardado_pc);
         
     }
 }
 
 EstadoPuntos();
 
-
-
+    //Estado Ventana Emergente ---------------------------------------------------------------------------------
 
 let estado_guardado_ventana = localStorage.getItem("Estado_Ventana");
 
 function EstadoVentana() {
     if (estado_guardado_ventana == 0) {
         ventanaEmergente = 0;
-        ventana.classList.add("cierre-ventana");
+        $("#ventana-emergente").addClass("cierre-ventana");
     }
 }
 
