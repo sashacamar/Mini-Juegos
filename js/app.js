@@ -82,6 +82,8 @@ class Partida {
         $("#pc").attr("src", `assets/img/${this.pcAtaca}_pc.png`);
         $("#resultadoPartida").attr("src", `assets/img/${this.resultado}.png`);
 
+        $("#resultadoPartida").hide().delay(250).fadeIn("fast");
+
     }
 
     
@@ -92,6 +94,9 @@ class Partida {
         } else if (this.resultado == "perdiste") {
             $("#puntaje-pc").html(`${parseInt($("#puntaje-pc").html()) + 1}`);
         }
+
+        $("#puntaje-vos").hide().delay(250).fadeIn("fast");
+        $("#puntaje-pc").hide().delay(250).fadeIn("fast");
         
     }
 
@@ -139,12 +144,12 @@ function juego() {
 
 //Replay --------------------------------------------------------------------------------
 
-$("#boton-replay").click( () => {if(ventanaEmergente == 0){ventanaEmergente=1; localStorage.setItem("Estado_Ventana", ventanaEmergente); $("#ventana-emergente").removeClass("cierre-ventana")}});
+$("#boton-replay").click( () => {if(ventanaEmergente == 0){ventanaEmergente=1; localStorage.setItem("Estado_Ventana", ventanaEmergente); $("#ventana-emergente").fadeIn("fast")}});
 
 //Restart --------------------------------------------------------------------------------
 
 let boton_restart = document.querySelector("#boton-restart");    
-$("#boton-restart").click( () => {if(ventanaEmergente == 0){ventanaEmergente=1; localStorage.setItem("Estado_Ventana", ventanaEmergente); $("#ventana-emergente").removeClass("cierre-ventana")}; numPartida=0;  $("#puntaje-vos").html("0"); $("#puntaje-pc").html("0"); partidas.length=0;});
+$("#boton-restart").click( () => {if(ventanaEmergente == 0){ventanaEmergente=1; localStorage.setItem("Estado_Ventana", ventanaEmergente); $("#ventana-emergente").fadeIn("fast")}; numPartida=0;  $("#puntaje-vos").html("0"); $("#puntaje-pc").html("0"); partidas.length=0;});
 
 
 //localStorage --------------------------------------------------------------------------------
@@ -171,7 +176,7 @@ let estado_guardado_ventana = localStorage.getItem("Estado_Ventana");
 function EstadoVentana() {
     if (estado_guardado_ventana == 0) {
         ventanaEmergente = 0;
-        $("#ventana-emergente").addClass("cierre-ventana");
+        $("#ventana-emergente").fadeOut("fast");
     }
 }
 
