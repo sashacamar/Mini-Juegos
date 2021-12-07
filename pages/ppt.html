@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra Papel Tijera</title>
+
+    <!-- LINK IMAGEN FAVICON -->
+    <link rel="shortcut icon" href="ppt-icon.png">
+
+    <!-- LINK CSS -->
+    <link rel="stylesheet" href="../css/ppt/style.css">
+    <link rel="stylesheet" href="../css/ppt/ventana-emergente.css">
+
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <!-- Logo -->
+ 
+    <img class="logo" src="../assets/ppt/img/logo.png" alt="icon">
+
+    <!-- Tablero -->
+
+    <div class="tablero">
+        <img class="tablero-img" src="../assets/ppt/img/tablero.png" alt="TABLERO">
+
+    </div>
+    
+    <div class="jugada">
+        <img class="jugada-vos" src="../assets/ppt/img/Papel_vos.png" alt="Tu Mano" id="vos">
+        <img class="jugada-pc" src="../assets/ppt/img/Papel_pc.png" alt="PC Mano" id="pc">
+    </div>
+
+    <div class="contador-puntaje">
+        <h2 class="puntaje-vos" id="puntaje-vos">0</h2>
+        <h2 class="puntaje-pc" id="puntaje-pc">0</h2>
+    </div>
+
+    <!-- Resultado -->
+
+    <div class="resultados">
+        <img class="resultado" src="../assets/ppt/img/empate.png" alt="resultado" id="resultadoPartida">
+        <img class="bg-resultado" src="../assets/ppt/img/resultados.png" alt="bg resultado">
+
+        <img class="replay" id="boton-replay" src="../assets/ppt/img/replay.png" alt="replay">
+        <img class="restart" id="boton-restart" src="../assets/ppt/img/restart.png" alt="restart">
+        <a href="../index.html">
+            <img class="home" src="../assets/ppt/img/home.png" alt="home">
+        </a>
+    </div>
+
+    <footer>
+        <a class="link-footer" href="https://www.instagram.com/sashacamar/" target="_blank">
+            <img class="instagram-img" src="../assets/img/instagram-logo.png" alt="instagram">
+            <h3 class="text-footer">@sashacamar</h3>
+        </a>
+    </footer>
+
+
+
+    <!-- ventana-emergente -->
+
+    <div class="ventana-emergente" id="ventana-emergente">
+        <img class="boton-salir" id="boton-salir" src="../assets/ppt/ventana-emergente/salir.png" alt="X">
+        <h1 class="ventana-titulo">Selecciona tu opción!</h1>
+        <div class="ventana-contenedor-img">
+            <img class="boton-img" id="boton-piedra" src="../assets/ppt/ventana-emergente/piedra.png" alt="Piedra">
+            <img class="boton-img" id="boton-papel" src="../assets/ppt/ventana-emergente/papel.png" alt="Papel">
+            <img class="boton-img" id="boton-tijera" src="../assets/ppt/ventana-emergente/tijera.png" alt="Tijera">
+        </div>
+    </div>
+    
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="../js/ppt/ventana-emergente.js"></script>
+    <script src="../js/ppt/app.js"></script>
+
+</body>
+</html>

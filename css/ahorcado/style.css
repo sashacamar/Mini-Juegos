@@ -1,0 +1,197 @@
+body{
+    background: url("../../assets/ppt/img/bg1.png");
+    background-repeat: repeat-y;
+    background-position-x: center;
+    background-position-y: 0;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+
+}
+
+/* --------------------logo */
+.logo{
+    width: 200px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    margin: auto;
+
+}
+
+/* --------------------tablero */
+.tablero {
+    display: flex;
+    /* justify-content: space-around; */
+
+    margin-top: 50px;
+}
+
+.horca-img {
+    height: 350px;
+
+
+    position: absolute;
+    left: 120px;
+    top: 180px;
+}
+
+
+.intentos {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    position: absolute;
+    top: 410px;
+    left: 165px;
+
+    color: white;
+    
+}
+
+/* --------------------contenedor de texto */
+.contenedor-text {
+    background-color: rgba(250, 250, 250, 0.25);
+    width: 600px;
+    height: 400px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+
+    position: absolute;
+    right: 100px;
+
+}
+
+/* --------------------palabra */
+.palabra {
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.guion {
+    width: 20px;
+    margin-right: 5px;
+}
+
+/* --------------------pista */
+.pista {    
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+
+    margin-top: 20px;
+    
+}
+
+.pista-text {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 15px;
+    font-weight: 200;
+}
+
+/* --------------------letras */
+.letras {
+    width: 600px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 500;
+
+    margin-top: 80px;
+}
+
+.contenedor-1, .contenedor-2, .contenedor-3 {
+    display: flex;
+}
+
+
+
+.cuadrito {
+    width: 20px;
+    height: 20px;
+    background-color: #E274D7;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 3px;
+
+    cursor: pointer;
+}
+
+/* --------------------logo y navegacion*/
+.navegacion {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.replay, .restart, .home {
+    position: fixed;
+    right: 150px;
+    bottom: 25px;
+    height: 40px;
+}
+
+.restart {
+    margin-right: 50px;
+}
+
+.replay {
+    margin-right: 100px;
+}
+
+
+.replay:hover, .restart:hover, .home {
+    cursor: pointer;
+}
+
+/* --------------------footer */
+
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: fixed;
+    bottom: 0px;
+    height: 20px;
+
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.link-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+}
+
+.instagram-img {
+    height: 12px;
+    padding-right: 10px;
+    padding-left: 25px;
+}
+
+.text-footer {
+    font-family: 'Montserrat Alternates', sans-serif;
+    color: white;
+    font-weight: 400;
+    font-size: 10px;
+}
