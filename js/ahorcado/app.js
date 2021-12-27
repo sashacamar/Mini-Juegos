@@ -56,7 +56,7 @@ let abc = [
 
                 
 //Llamada JSON ---------------------------------------------------------------------------------
-const urlGet = "https://sashacamar.github.io/API-Palabras-Ahorcado/data/words.json"
+const urlGet = "../../json/ahorcado/words.json"
 
 function iniciarJuego () {
     $.get(urlGet, function (respuesta, estado) {
