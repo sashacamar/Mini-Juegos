@@ -32,8 +32,18 @@ body{
 
 }
 
+.juego-link {
+    text-decoration: none;
+}
 
-
+.juego-titulo {
+    text-align: center;
+    color: black;
+    font-family: 'Montserrat Alternates';
+    font-size: 20px;
+    font-weight: 400;
+    background-color: white;
+}
 
 /* --------------------juego ppt */
 .icon-ppt {
@@ -83,7 +93,7 @@ footer {
     text-decoration: none;
 }
 
-.instagram-img {
+.social-img {
     height: 25px;
     padding-right: 20px;
 }

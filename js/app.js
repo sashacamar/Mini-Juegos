@@ -1,5 +1,3 @@
-//alert("hola");
-
 //---------------------------animaciones
 
 $("#cuadro-ppt").on("mouseenter", () => {$("#cuadro-ppt").animate({
