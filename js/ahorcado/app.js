@@ -58,41 +58,44 @@ let abc = [
 //Llamada JSON ---------------------------------------------------------------------------------
 const urlGet = "../../json/ahorcado/words.json"
 
-$.get(urlGet, function (respuesta, estado) {
-    if(estado === "success"){
-        
-        //Iniciar Juego ----------------------------------------------
-        palabras = respuesta;
-
-            //Elegir palabra aleatoria ----------------------------------------------
-        num_aleatorio = Math.floor(Math.random() * palabras.length);
-
-        palabraString = palabras[num_aleatorio].word;
-
-            //Variables ----------------------------------------------
-        pista = palabras[num_aleatorio].hint;
-        let nLetras = palabras[num_aleatorio].word.length;
-        let primeraLetra = palabras[num_aleatorio].word.charAt(0);
-        let ultimaLetra = palabras[num_aleatorio].word.charAt(nLetras - 1);
-
-            //Mostrar palabra seleccionada aleatoriamente ----------------------------------------------
-                //Array ----------------------------------------------
-        arrayLetras = palabras[num_aleatorio].word.split('');
-
-        mostarPalabraActual (arrayLetras);
-
-        mostrarPalabraHTML();
-
-        //mostrar pista en HTML---------------------------------------------------------------------
-        $('#pista').text(`Pista: ${pista}`);
-
-        //mostrar cantidad de intentos en HTML ---------------------------------------------------------------------
-        $("#intentos").text(`${intentosMax}`);
-        
-    }
-});
-
-
+function iniciarJuego () {
+    $.get(urlGet, function (respuesta, estado) {
+        if(estado === "success"){
+            
+            //Iniciar Juego ----------------------------------------------
+            palabras = respuesta;
+    
+                //Elegir palabra aleatoria ----------------------------------------------
+            num_aleatorio = Math.floor(Math.random() * palabras.length);
+    
+            palabraString = palabras[num_aleatorio].word;
+    
+                //Variables ----------------------------------------------
+            pista = palabras[num_aleatorio].hint;
+            let nLetras = palabras[num_aleatorio].word.length;
+            let primeraLetra = palabras[num_aleatorio].word.charAt(0);
+            let ultimaLetra = palabras[num_aleatorio].word.charAt(nLetras - 1);
+    
+                //Mostrar palabra seleccionada aleatoriamente ----------------------------------------------
+                    //Array ----------------------------------------------
+            arrayLetras = palabras[num_aleatorio].word.split('');
+    
+            mostarPalabraActual (arrayLetras);
+    
+            mostrarPalabraHTML();
+    
+            //mostrar pista en HTML---------------------------------------------------------------------
+            $('#pista').text(`Pista: ${pista}`);
+    
+            //mostrar cantidad de intentos en HTML ---------------------------------------------------------------------
+            $("#intentos").text(`${intentosMax}`);
+            
+        }
+    });
+};
+iniciarJuego ();
+    
+    
     //Mostrar palabra ---------------------------------------------------------------------
     function mostrarLetra (arrPalabra, abc) {
         
@@ -120,6 +123,8 @@ function revisarLetra (arrPalabra, abc) {
         mostrarLetra(arrPalabra, abc);
     };
 };
+
+
 
 //------------------------------------------------------------------------------------------------------------------
 
